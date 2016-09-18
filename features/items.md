@@ -20,15 +20,18 @@ Typically items are defined using the [openHAB Designer](http://docs.openhab.org
 
 ## Item Syntax
 Items are defined in the following syntax:
+
 ```xtend
 itemtype itemname ["labeltext"] [<iconname>] [(group1, group2, ...)] [{bindingconfig}]
 ```
+
 Note: Parts in square brackets ([]) are optional.
 
 **Example**
 ```xtend
 Number Sensor_Temperature "The Temperature is [%.1f °C]" <temperature> (gTemperature, gSensor) {knx="1/0/15+0/0/15"}
 ```
+
 The example above defines an item:
 - of type `Number`
 - with name `Sensor_Temperature`
@@ -57,15 +60,18 @@ All available openHAB2 item types and their relevant commands can be viewed [her
 While a Dimmer item can accept either OnOff, IncreaseDecrease, or Percent updates, Dimmer items store their state as a Percent value.  See the following example:
 
 item:
+
 ```xtend
 Dimmer  Light_FF_Office  "Dimmer [%d %%]"  {milight="bridge01;3;brightness"}
 ```
 
 sitemap:
+
 ```xtend
 Switch  item=Light_FF_Office
 Slider  item=Light_FF_Office
 ```
+
 When the Switch widget is used, it sends ON or OFF commands to the item, but these are mapped to 100% and 0%, respectively.  When the slider widget is used, it sends Percent commands to the item, which are used as the item's state.  In the example above, if you move the Slider widget to 60%, move the Switch to OFF, and finally move the switch to ON, the item's state will be 100%.
 
 ## Item names
@@ -121,6 +127,7 @@ OR(value1, value2)  | Does a logical 'or' operation. If at least one item is of 
 SUM                 | Calculates the sum of all items in the group.
 
 An example of this would be:
+
 ```xtend
 Group:Contact:OR(OPEN,CLOSED)  gMotionSensors  (All)
 ```
